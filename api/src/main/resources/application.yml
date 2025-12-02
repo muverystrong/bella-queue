@@ -52,6 +52,14 @@ bella:
       host: ${QUEUE_REDIS_HOST}
       port: ${QUEUE_REDIS_PORT}
       password: ${QUEUE_REDIS_PASSWORD}
+    worker:
+      enabled: true
+      scheduled:
+        enabled: true
+        queues: bella_batch_split_queue:1
+        take-strategy: sequential
+        size: 1
+        scheduleWorkerDelayMs: 1000
 
 app:
   id: bella-queue
